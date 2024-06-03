@@ -2,7 +2,6 @@
 #C1 
 
 # Punctul a)
-# Function to generate a random permutation based on uniform values
 generate_permutation = function(n) {
   U = runif(n)
   # Get the permutation by sorting the indices based on the random values
@@ -10,35 +9,30 @@ generate_permutation = function(n) {
   return(permutation)
 }
 
-# Function to generate n binary strings of length k
+
 generate_binary_strings = function(n, k) {
-  # Generate a matrix of random binary values (0 or 1)
+  
   binary_matrix = matrix(sample(0:1, n * k, replace = TRUE), nrow = n, ncol = k)
   
-  # Convert each row of the matrix to a binary string
+  
   binary_strings = apply(binary_matrix, 1, function(x) paste(x, collapse = ""))
   
   return(binary_strings)
 }
 
-# Function to sort binary strings based on a given permutation
+
 sort_binary_strings = function(binary_strings, permutation) {
   sorted_strings = binary_strings[permutation]
   return(sorted_strings)
 }
 
-# Main function to execute the steps
+
 main = function(n, k) {
-  # Step 1: Generate a random permutation
   permutation = generate_permutation(n)
-  
-  # Step 2: Generate n binary strings of length k
   binary_strings = generate_binary_strings(n, k)
   
-  # Step 3: Sort binary strings according to the permutation
   sorted_strings = sort_binary_strings(binary_strings, permutation)
   
-  # Print the results
   cat("Generated Permutation:\n", permutation, "\n")
   cat("Generated Binary Strings:\n", binary_strings, "\n")
   cat("Sorted Binary Strings:\n", sorted_strings, "\n")
@@ -108,7 +102,7 @@ cat("Wi este lexicografic strict mai mic decat Wj:", is_less, "\n")
 #Punctul c)
 
 compare_words = function(word1, word2) {
-  # Compare two binary strings lexicographically
+  
   if (word1 < word2) {
     return(-1)
   } else if (word1 > word2) {
@@ -119,7 +113,7 @@ compare_words = function(word1, word2) {
 }
 
 partition = function(arr, low, high) {
-  # Partition the array around a pivot element chosen randomly
+  
   pivot_index = sample(low:high, 1)
   arr[c(pivot_index, high)] = arr[c(high, pivot_index)]
   pivot = arr[high]
@@ -137,7 +131,7 @@ partition = function(arr, low, high) {
 }
 
 quicksort = function(arr, low, high) {
-  # Perform the QuickSort algorithm
+  
   if (low < high) {
     pi = partition(arr, low, high)
     arr = quicksort(arr, low, pi - 1)
@@ -147,11 +141,9 @@ quicksort = function(arr, low, high) {
 }
 
 sort_binary_strings = function(binary_strings) {
-  # Main function to sort a list of binary strings using randomized QuickSort
   return(quicksort(binary_strings, 1, length(binary_strings)))
 }
 
-# Example usage:
 binary_strings = c("101", "010", "111", "001", "100", "011", "000", "110")
 sorted_strings = sort_binary_strings(binary_strings)
 print(sorted_strings)
@@ -176,7 +168,7 @@ calculate_cut_cardinality = function(A, B, edges) {
   return(cut_edges)
 }
 
-# Funcție pentru determinarea unei tăieturi printr-un algoritm aleator
+# Funcție pentru determinarea unei tăieturi
 random_cut = function(graph) {
   num_nodes = graph$num_nodes
   edges = graph$edges
@@ -189,7 +181,7 @@ random_cut = function(graph) {
   return(list(A = A, B = B, cardinality = cardinality))
 }
 
-# Funcție principală pentru rularea algoritmului și afișarea rezultatului
+
 run_random_cut_algorithm = function(num_nodes, num_edges) {
   set.seed(42)
   graph = generate_graph(num_nodes, num_edges)
@@ -200,13 +192,13 @@ run_random_cut_algorithm = function(num_nodes, num_edges) {
   cat("Cardinalul tăieturii este:", result$cardinality, "\n")
 }
 
-# Exemplu de utilizare
+
 num_nodes = 10 # Numărul total de noduri (2n sau 2n + 1)
 num_edges = 15 # Numărul de muchii
 
-# Rularea algoritmului
-run_random_cut_algorithm(num_nodes, num_edges)
 
+run_random_cut_algorithm(num_nodes, num_edges)
+# Punctul b)
 # b) Pentru a crește șansele de a găsi o tăietură de cardinal cât mai mare, rulam algoritmul de mai multe ori și să păstrăm tăietura cu cardinalul maxim găsit. Aceasta se bazează pe faptul că rularea multiplă a unui algorit crește probabilitatea de a găsi soluția optimă.
 
 

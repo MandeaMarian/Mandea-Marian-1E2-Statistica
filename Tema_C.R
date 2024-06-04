@@ -4,7 +4,6 @@
 # Punctul a)
 generate_permutation = function(n) {
   U = runif(n)
-  # Get the permutation by sorting the indices based on the random values
   permutation = order(U)
   return(permutation)
 }

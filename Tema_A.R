@@ -1,5 +1,5 @@
 
-
+# A1 a)
 AI = function(lambda,m,n,p,k){
   valori = k:m;
   prob_poisson = dpois(valori,lambda); #Distributa Poisson
@@ -11,7 +11,7 @@ AI = function(lambda,m,n,p,k){
 }
 
 AI(3,10,15,0.5,5)
-
+# A2 a)
 AII = function(file){
   
   values = read.csv(file);
@@ -34,7 +34,7 @@ AII = function(file){
 
 print(file.exists("note_PS.csv"))
 
-#A1c
+# A1 c)
 find_k0 = function(lambda, threshold = 1 - 10^(-6)) {
   k0 = 0
   cumulative_prob = ppois(k0, lambda)
